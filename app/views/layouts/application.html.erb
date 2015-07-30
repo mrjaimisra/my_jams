@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MyJams</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div>
+  <% if current_user %>
+      Hello, <%= current_user.username %>
+      <%= link_to "Logout", logout_path, method: :delete %>
+  <% end %>
+</div>
+
+<% flash.each do |type, msg| %>
+    <%= content_tag :div, msg, class: "flash_#{type}" %>
+<% end %>
+
+<%= yield %>
+
+</body>
+</html>
